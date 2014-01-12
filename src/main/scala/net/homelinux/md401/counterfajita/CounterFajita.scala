@@ -15,6 +15,11 @@ object CounterFajita {
 //Hears about a certain proportion of available jobs given spare hours.
 //Applies for a job in proportion to thing.
 
+//Available jobs:
+//Num hours
+//Value produced
+//Pay
+
 class Person extends Actor with FSM[PersonState, Any] {
   startWith(Unemployed, "")
 
