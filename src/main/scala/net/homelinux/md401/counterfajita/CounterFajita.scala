@@ -21,12 +21,14 @@ object CounterFajita {
 //Value produced
 //Pay
 
-case class AvailableJob()
+case class AvailableJob(valueProduced: Double)
 
 case class Person()
 
 case class WorldState(availableJobs: Map[UUID, AvailableJob],
   people: Map[UUID, Person],
-  employments: Map[UUID, UUID]
-)
+  employments: Map[UUID, UUID]){
+
+  def value() = employments.values.map(availableJobs).map{_.valueProduced}.sum
+}
 //}
