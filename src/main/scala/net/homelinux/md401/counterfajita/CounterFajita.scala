@@ -2,6 +2,7 @@ package net.homelinux.md401.counterfajita
 
 import akka.actor.Actor
 import akka.actor.FSM
+import java.util.UUID
 
 sealed trait PersonState
 case object Unemployed extends PersonState
@@ -20,11 +21,12 @@ object CounterFajita {
 //Value produced
 //Pay
 
-class Person extends Actor with FSM[PersonState, Any] {
-  startWith(Unemployed, "")
+case class AvailableJob()
 
-  when(Unemployed) {
-    case Event("", "") =>
-      stay
-  }
-}
+case class Person()
+
+case class WorldState(availableJobs: Map[UUID, AvailableJob],
+  people: Map[UUID, Person],
+  employments: Map[UUID, UUID]
+)
+//}
